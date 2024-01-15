@@ -1,0 +1,104 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+.wrap {
+  max-width: 1200px;
+  margin: auto;
+  height: 100vh;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(238, 238, 238);
+}
+nav input {
+  display: none;
+}
+nav .trigger {
+  display: none;
+}
+nav .logo {
+  margin: 10px 0 10px 40px;
+}
+nav ul {
+  display: flex;
+  margin: 10px;
+}
+nav ul li {
+  margin-right: 20px;
+}
+.Welcome {
+  background-color: rgb(207, 220, 236);
+  text-align: center;
+  width: 100%;
+  line-height: 25vh;
+  margin: auto;
+}
+
+main {
+  text-align: center;
+}
+main h2 {
+  margin-top: 20px;
+}
+.sectionBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.sectionBox .box {
+  flex: 1 40%;
+  background-color: rgb(139, 152, 168);
+  height: 200px;
+  margin: 20px;
+}
+footer {
+  text-align: center;
+}
+footer span {
+  background-color: rgb(207, 220, 236);
+  padding: 10px;
+}
+@media screen and (max-width: 799px) {
+  nav {
+    position: relative;
+  }
+  nav ul {
+    display: none;
+  }
+  nav .trigger {
+    display: block;
+    margin: auto 20px auto 0;
+  }
+  nav .trigger .line {
+    width: 30px;
+    height: 2px;
+    background: #666;
+    margin: 6px 0;
+  }
+  nav #switch:checked + ul {
+    display: flex;
+    position: absolute;
+    top: 42.5px;
+    height: auto;
+    background-color: rgb(238, 238, 238);
+    margin: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s ease;
+  }
+  nav #switch:checked + ul > li {
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 499px) {
+  main .sectionBox .box {
+    flex: 1 80%;
+  }
+}
