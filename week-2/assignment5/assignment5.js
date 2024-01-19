@@ -1,8 +1,8 @@
 function twoSum(nums, target) {
   for (let i = 0; i < nums.length - 1; i++) {
-    for (let j = 1; j < nums.length; j++) {
-      if (nums[i] + nums[j + i] === target) {
-        console.log([i, i + j]);
+    for (let j = 1 + i; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        console.log([i, j]);
       }
     }
   }

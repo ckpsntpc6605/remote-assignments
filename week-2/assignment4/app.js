@@ -1,6 +1,6 @@
-let Welcome = document.querySelector(".Welcome");
-Welcome.addEventListener("click", () => {
-  Welcome.innerHTML = `<h1>Have a Good Time!</h1>`;
+const welcome = document.querySelector(".welcome");
+welcome.addEventListener("click", () => {
+  welcome.innerHTML = `<h1>Have a Good Time!</h1>`;
 });
 
 let sectionBtn = document.querySelector(".action");
