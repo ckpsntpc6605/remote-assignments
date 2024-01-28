@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>getData</title>
+  </head>
+  <body>
+    <input type="text" id="inputnumber" name="number" />
+    <button id="btn">送出</button>
+
+    <script>
+      const btn = document.querySelector("#btn");
+      btn.addEventListener("click", () => {
+        const input = document.querySelector("#inputnumber").value; //要丟在監聽器裏面，不然監聽器抓不到輸入input的值
+        console.log(input);
+        fetch(`/getData`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("the response is not ok");
+            }
+            window.location.href = `/getData?number=${input}`;
+          })
+          .catch((error) => console.error("There is a fetch problem:", error));
+      });
+    </script>
+  </body>
+</html>
