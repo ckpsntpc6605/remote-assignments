@@ -6,20 +6,34 @@
     <title>getData</title>
   </head>
   <body>
-    <input type="text" id="inputnumber" name="number" />
-    <button id="btn">送出</button>
-
+    <form action="/getData" method="get">
+      <input type="text" id="inputnumber" name="number" />
+      <button id="btn">送出</button>
+      <div class="result"></div>
+    </form>
     <script>
+      const result = document.querySelector(".result");
       const btn = document.querySelector("#btn");
       btn.addEventListener("click", () => {
-        const input = document.querySelector("#inputnumber").value; //要丟在監聽器裏面，不然監聽器抓不到輸入input的值
+        event.preventDefault(); //避免送出表單會自動跳轉頁面
+        const input = document.querySelector("#inputnumber").value; //<<<要丟在監聽器裏面，不然監聽器抓不到輸入input的值
         console.log(input);
-        fetch(`/getData`)
+        fetch(`/getData?number=${input}`)
           .then((response) => {
             if (!response.ok) {
               throw new Error("the response is not ok");
             }
-            window.location.href = `/getData?number=${input}`;
+            return response.json();
+          })
+          .then((data) => {
+            // console.log(data);
+            if (data.lack) {
+              result.innerHTML = `結果：${data.lack}`;
+            } else if (data.result) {
+              result.innerHTML = `結果：${data.result}`;
+            } else if (data.wrong) {
+              result.innerHTML = `結果：${data.wrong}`;
+            }
           })
           .catch((error) => console.error("There is a fetch problem:", error));
       });
