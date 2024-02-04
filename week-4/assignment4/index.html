@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment4</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="list"></ul>
+      <p class="more">More</p>
+    </div>
+
+    <script>
+      const more = document.querySelector(".more");
+      const ul = document.querySelector(".list");
+
+      let page = 2;
+      function fetchMore(num) {
+        let moreHtml = "";
+        fetch(
+          `https://api.github.com/orgs/facebook/repos?per_page=5&page=${num}`
+        )
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error("Res is NOT ok.....");
+            }
+            return res.json();
+          })
+          .then((dataList) => {
+            dataList.map((data) => {
+              const { name, visibility, description, topics } = data;
+              let topicsItem = "";
+              topics.forEach((item) => {
+                topicsItem += `<span>${item}</span>`;
+              });
+              moreHtml += `<li>
+                <span>${name}</span>
+                <span>${visibility}</span>
+                <p>${description}</p>
+                <div class="topics">${topicsItem}</iv>
+                </li>`;
+            });
+            ul.insertAdjacentHTML("beforeend", moreHtml);
+          });
+      }
+
+      more.addEventListener("click", () => {
+        fetchMore(page);
+        page++;
+      });
+
+      //>>>>>FirstFetch
+      let html = "";
+      fetch("https://api.github.com/orgs/facebook/repos?per_page=5&page=1")
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Res is NOT ok.....");
+          }
+          return res.json();
+        })
+        .then((dataList) => {
+          dataList.map((data) => {
+            const { name, visibility, description, topics } = data;
+            let topicsItem = "";
+            topics.forEach((item) => {
+              topicsItem += `<span>${item}</span>`;
+            });
+            html += `<li>
+                <span>${name}</span>
+                <span>${visibility}</span>
+                <p>${description}</p>
+                <div class="topics">${topicsItem}</iv>
+                </li>`;
+          });
+          ul.innerHTML = html;
+        });
+    </script>
+  </body>
+</html>

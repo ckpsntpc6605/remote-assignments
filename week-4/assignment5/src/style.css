@@ -1,0 +1,12 @@
+#root div {
+  text-align: center;
+  font-size: 2rem;
+}
+button {
+  background-color: #fff;
+  border: 1px solid #000;
+  font-size: 2rem;
+}
+span {
+  padding-left: 20px;
+}

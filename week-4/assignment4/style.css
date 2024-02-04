@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.wrap {
+  width: 100%;
+  margin: auto;
+}
+ul {
+  margin: 3em auto 0 auto;
+  min-width: 400px;
+  height: 100%;
+  border: 3px solid #ccc;
+  border-radius: 8px;
+}
+ul li {
+  padding: 15px;
+}
+ul li + li {
+  border-top: 3px solid #ccc;
+}
+ul li > span:first-child {
+  color: rgb(46, 102, 211);
+  font-size: 1.7rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+ul li > span:nth-child(2) {
+  padding: 0 10px;
+  line-height: 1.8;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  color: #555;
+  color: #000;
+  display: inline-block;
+}
+ul li > span::first-letter {
+  text-transform: uppercase;
+}
+ul li p {
+  color: #666;
+  margin: 5px auto;
+}
+ul li div {
+  margin-top: 10px;
+}
+ul li div span {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: rgb(225, 243, 254);
+  border-radius: 20px;
+  color: rgb(47, 103, 211);
+}
+
+.wrap > p {
+  text-align: center;
+  margin: 30px auto;
+  color: rgb(47, 103, 211);
+  font-weight: 500;
+}
+
+@media screen and (min-width: 600px) {
+  .wrap {
+    width: 80%;
+  }
+}
